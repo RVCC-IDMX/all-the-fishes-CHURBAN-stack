@@ -28,6 +28,8 @@
     fish1.angle = 20; 
     fish1.tint = 0xFFFFFF; 
     fish1.anchor.set(.5); 
+    sprite.scale.set() function.
+    
 
 //My second sprite 
 let fish2 = PIXI.Sprite.from("img/lepomis-gibbosus.png"); 
@@ -36,7 +38,7 @@ let fish2 = PIXI.Sprite.from("img/lepomis-gibbosus.png");
     fish2.anchor.set(.5);
     fish2.scale.set(.3);
     fish2.angle = 0; 
-    fish2.tint = 0x000FF; 
+    fish2.tint = 0x000FF;  
 
     //My third sprite 
 let fish3 = PIXI.Sprite.from("img/lepomis-gibbosus.png"); 
@@ -67,11 +69,10 @@ var my_container = new PIXI.Container();
         let wobble1 = Math.sin(time/1000)*30; 
         let wobble2 = Math.sin(time/700)*50; 
         let wobble3 = Math.sin(time/600)*50; 
-         fish1.y = wobble; 
+         fish1.y = wobble1; 
          fish2.y = wobble2; 
-         fish3.y7 = wobble3; 
-
-        fish1.scale.x = Math.sin(time/1000)
+         fish3.y = wobble3;
+        fish1.scale.set(Math.sin(time/1000));
         setTimeout(animationLoop, 1000/30)
         
     }
