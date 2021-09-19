@@ -11,9 +11,9 @@ Website used for Seaweed: https://www.cleanpng.com/png-edible-seaweed-kelp-clip-
 
 Lpomis-Cyanellus: https://tpwd.texas.gov/huntwild/wild/species/greensunfish/
 
-Colorful Fish: https://www.pngaaa.com/detail/1146056
+Blue amd Yellow Fish: https://www.pngaaa.com/detail/1146056
 
- Colorful Fish: https://www.pngaaa.com/download/1145955
+Colorful Fish: https://www.pngaaa.com/download/1145955
 
 
 
