@@ -1,84 +1,86 @@
- <!DOCTYPE html>
- <html lang="en">
- <head>
-     <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>All The Fishes</title>
-     <script src="https://pixijs.download/release/pixi.min.js"></script>
- </head>
- <body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All The Fishes</title>
+    <script src="https://pixijs.download/release/pixi.min.js"></script>
+  </head>
+  <body>
+    <script>
 
- <script>
+          //The App
+          var app = new PIXI.Application({
+              width:640,
+              height:480,
+              backgroundColor: 0x000000
+       });
 
-    //The App
-    var app = new PIXI.Application({
-        width:640,
-        height:480,
-        backgroundColor: 0x000000
- }); 
+          //Add view to the document
+          document.body.appendChild(app.view);
 
-    //Add view to the document 
-    document.body.appendChild(app.view); 
-    
-    //My first sprite 
-    let fish1 = PIXI.Sprite.from("img/lepomis-cyanellus.gif"); 
-    fish1.x = -160; 
-    fish1.y = 0;  
-    fish1.angle = 20; 
-    fish1.tint = 0xFFFFFF; 
-    fish1.anchor.set(.5); 
-    sprite.scale.set() function.
-    
+          //My first sprite
+          let fish1 = PIXI.Sprite.from("img/lepomis-cyanellus.gif");
+          fish1.x = -160;
+          fish1.y = 0;
+          fish1.angle = 20;
+          fish1.tint = 0xFFFFFF;
+          fish1.anchor.set(.5);
+          fish1.width = 180;
+          fish1.height = 120;
+          fish1.x = 180;
+          fish1.y = 10;
 
-//My second sprite 
-let fish2 = PIXI.Sprite.from("img/lepomis-gibbosus.png"); 
-    fish2.x = 0;  
-    fish2.y = 0;  
+      //My second sprite
+    let fish2 = PIXI.Sprite.from("img/lepomis-gibbosus.png"); 
+    fish2.x = 10;
+    fish2.y = -100;
     fish2.anchor.set(.5);
-    fish2.scale.set(.3);
     fish2.angle = 0; 
     fish2.tint = 0x000FF;  
+    fish2.width = 180;
+    fish2.height = 120;
 
-    //My third sprite 
-let fish3 = PIXI.Sprite.from("img/lepomis-gibbosus.png"); 
-    fish3.x = 70;  
-    fish3.y = 0;  
-    fish3.anchor.set(.5);
-    fish3.angle = 2;
+          //My third sprite
+      let fish3 = PIXI.Sprite.from("img/lepomis-macrochirus.png");
+          fish3.x = 70;
+          fish3.y = 35; 
+          fish3.anchor.set(.5);
+          fish3.angle = 5;
+          fish3.width = 100;
+          fish3.height = 150;
 
-    //Add it to the stage!
-    app.stage.addChild(fish1);
-    app.stage.addChild(fish2);
-    app.stage.addChild(fish3); 
+          //Add it to the stage!
+          app.stage.addChild(fish1);
+          app.stage.addChild(fish2);
+          app.stage.addChild(fish3);
 
-    //My container 
-var my_container = new PIXI.Container(); 
-    my_container.addChild(fish1); 
-    my_container.addChild(fish2); 
-    my_container.x = 320; 
-    my_container.y = 240;
-     
-    app.stage.addChild(my_container);
+          //My container
+      var my_container = new PIXI.Container();
+          my_container.addChild(fish1);
+          my_container.addChild(fish2);
+          my_container.x = 320;
+          my_container.y = 240;
 
-    //Animation loop!
-    function animationLoop() {
+          app.stage.addChild(my_container);
 
-        let time = Date.now(); 
+          //Animation loop!
+          function animationLoop() {
 
-        let wobble1 = Math.sin(time/1000)*30; 
-        let wobble2 = Math.sin(time/700)*50; 
-        let wobble3 = Math.sin(time/600)*50; 
-         fish1.y = wobble1; 
-         fish2.y = wobble2; 
-         fish3.y = wobble3;
-        fish1.scale.set(Math.sin(time/1000));
-        setTimeout(animationLoop, 1000/30)
-        
-    }
-    animationLoop(); 
+              let time = Date.now();
 
- </script>
+              let wobble1 = Math.sin(time/1000)*30;
+              let wobble2 = Math.sin(time/700)*50;
+              let wobble3 = Math.sin(time/600)*50;
+               fish1.y = wobble1;
+               fish2.y = wobble2;
+               fish3.y = wobble3;
+              fish1.scale.set(Math.sin(time/1000));
+              setTimeout(animationLoop, 1000/30)
 
- </body>
- </html>
+          }
+          animationLoop();
+    </script>
+  </body>
+</html>
