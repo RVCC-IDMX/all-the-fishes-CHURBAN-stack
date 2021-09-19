@@ -51,10 +51,16 @@
     //fish2.height = 120;
     fish2.scale.set(.1); 
 
+       //Seaweed
+       let seaweed = PIXI.Sprite.from("img/seaweed.png");
+       seaweed.x = 200;
+       seaweed.y = 175;
+       seaweed.scale.set(.25); 
+
           //My third sprite
       let fish3 = PIXI.Sprite.from("img/lepomis-macrochirus.png");
-          fish3.x = -70;
-          fish3.y = 225; 
+          fish3.x = -300;
+          fish3.y = 0; 
          // fish3.anchor.set(.5);
           //fish3.angle = 5;
           //fish3.width = 100;
@@ -65,13 +71,14 @@
           app.stage.addChild(fish1);
           app.stage.addChild(fish2);
           app.stage.addChild(fish3);
-          
+          app.stage.addChild(seaweed); 
 
           //My container
       var my_container = new PIXI.Container();
           my_container.addChild(fish1);
           my_container.addChild(fish2);
           my_container.addChild(fish3); 
+        
           my_container.x = 320;
           my_container.y = 240;
 
@@ -85,10 +92,10 @@
 
               let wobble1 = Math.sin(time/1000)*15;
               let wobble2 = Math.sin(time/700)*50;
-              let wobble3 = Math.cos(time/600)*-25;
+              let wobble3 = Math.cos(time/600)*50;
               fish1.y = wobble1;
               fish2.y = wobble2;
-              fish3.y = wobble3;
+              fish3.x = wobble3;
               //fish3.scale.set(Math.sin(time/1000));
               setTimeout(animationLoop, 1000/30)
 
@@ -97,4 +104,3 @@
     </script>
   </body>
 </html>
-a
