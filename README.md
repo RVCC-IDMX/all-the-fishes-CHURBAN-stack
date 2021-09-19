@@ -9,11 +9,11 @@ Website used for Seaweed: https://www.cleanpng.com/png-edible-seaweed-kelp-clip-
 
 ## Image citaions used for fish throughout the course of the project: 
 
-lepomis-cyanellus https://tpwd.texas.gov/huntwild/wild/species/greensunfish/
+Lpomis-Cyanellus: https://tpwd.texas.gov/huntwild/wild/species/greensunfish/
 
-Fish 2: 
+Colorful Fish: https://www.pngaaa.com/detail/1146056
 
-Fish 3: 
+ Colorful Fish: https://www.pngaaa.com/download/1145955
 
 
 
