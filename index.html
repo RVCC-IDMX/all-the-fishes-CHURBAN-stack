@@ -344,7 +344,37 @@ requestAnimationFrame(animationLoop);
         }
         sway();
        
-       
+        Animate.loop = function(obj,loopFunc) {
+
+//No state parameters
+
+//We need to know when we've started animating
+var startTime = Date.now();
+
+//This will be our personal animation loop
+function loop() {
+
+    //Calculate our parameters
+    var params = {
+        ticker : Date.now() - startTime
+    };
+    
+    //In here it's just our own code
+    loopFunc(params);
+
+    //Start the loop going!
+    obj.animationID = requestAnimationFrame(loop);
+
+}
+
+//Clear the animation ID so there aren't competing loops
+cancelAnimationFrame(obj.animationID);
+
+//Begin the loop!
+loop();
+
+};
+
 
 
 
