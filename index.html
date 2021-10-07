@@ -13,7 +13,7 @@
       var app = new PIXI.Application({
         width: 640,
         height: 480,
-        backgroundColor: 0x000000,
+        backgroundColor: 0x000000
       });
 
       //Add view to the document
@@ -79,13 +79,13 @@
         let wobble1 = Math.sin(time / 1000) * 15;
         let wobble2 = Math.sin(time / 700) * 50;
         let wobble3 = Math.cos(time / 1200) * 50;
-        fish1.y = wobble1;
-        fish2.y = wobble2;
-        fish3.y = wobble3;
+        //fish1.y = wobble1;
+        //fish2.y = wobble2;
+        //fish3.y = wobble3;
 
-        setTimeout(animationLoop, 1000 / 30);
+        //setTimeout(animationLoop, 1000 / 30);
       }
-      animationLoop();
+      //animationLoop();
 
      // Button forchanging button
     let ourButton = new PIXI.Container();
@@ -202,6 +202,149 @@ function makeSlider() {
 let slideContain = makeSlider();
 app.stage.addChild(slideContain);
 
+
+//setTimeout(animationLoop, 1000 / 30);
+requestAnimationFrame(animationLoop);
+        
+        animationLoop();
+
+        let Animate = {};
+
+        //animate function
+        Animate.to = function(obj,end) {
+            return new Promise((resolve,reject) => {
+
+                //initial state for animated objects
+                var start = {
+                    x : obj.x,
+                    y : obj.y
+                }
+
+                //set defaults
+                if (end.duration == undefined) end.duration = 0;
+
+                var startTime = Date.now();
+
+                function loop(){
+                    let ticker = Date.now() - startTime;
+                    let delta = ticker/end.duration;
+
+                    //caluclate delta
+                    if (delta >= 1){
+                        obj.x = end.x;
+                        obj.y = end.y;
+                        console.log("done");
+                        resolve();
+                        return;
+                    }
+
+                    //interpolation
+                    let lerp = (a,b,n) => {
+                        return (1 - n) * a + n * b;
+                    }
+
+                    obj.x = lerp(start.x,end.x,delta);
+                    obj.y = lerp(start.y,end.y,delta);
+                    obj.animationID = requestAnimationFrame(loop);
+                }
+
+                cancelAnimationFrame(obj.animationID);
+
+                loop();
+                //end promise
+            });
+            
+        };
+
+        // stop animation
+        Animate.stop = function(obj){
+            cancelAnimationFrame(obj.animationID);
+        }
+
+        //ease
+        Animate.linear = x => x;
+
+        Animate.easeIn = x => x * x;
+
+        Animate.easeOut = x => 1 - (1 - x) * (1 - x);
+
+        Animate.easeInOut = x => x < .5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) /2;
+
+        //pause animation
+        // function pause(ms){
+        //     return new Promise((resolve,reject)=> {
+        //         setTimeout(resolve,ms);
+        //     });
+        // }
+
+        //animate fish1
+        async function idleSwim1() {
+            await Animate.to(fish1,{
+                x:420,y:20,
+                duration:3000,
+
+            });
+            await Animate.to(fish1,{
+                x:420,y:50,
+                duration:2000,
+                
+            });
+            //await console.log("promise execute");
+            
+            idleSwim1();
+        }
+        idleSwim1();
+
+        //animate fish2
+        async function idleSwim2() {
+            await Animate.to(fish2,{
+                x:30,y:20,
+                duration:2000,
+                easing:Animate.easeInOut
+            });
+            await Animate.to(fish2,{
+                x:30,y:60,
+                duration:2000,
+                easing:Animate.easeInOut
+            });
+            idleSwim2();
+        }
+        idleSwim2();
+
+        //animate fish3
+        async function idleSwim3(){
+            await Animate.to(fish3,{
+                x:350,y:0,
+                duration:3000,
+                easing:Animate.easeInOut
+            });
+            await fish3.scale.set(.1);
+            await Animate.to(fish3,{
+                x:350,y:20,
+                duration:3000,
+                easing:Animate.easeInOut
+            });
+            idleSwim3();
+        }
+        idleSwim3();
+
+
+        //animate seaweed
+        async function sway(){
+            await Animate.to(seaweed,{
+                x:50,y:0,
+                duration:5000,
+                easing:Animate.easeInOut
+            });
+            await Animate.to(seaweed,{
+                x:20,y:0,
+                duration:500,
+                easing:Animate.easeInOut
+            });
+            sway();
+        }
+        sway();
+       
     </script>
   </body>
 </html>
